@@ -4,6 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver import Keys
 
+
 class BasePage:
     def __init__(self, driver: WebDriver, url: str):
         self.driver = driver
@@ -24,14 +25,9 @@ class BasePage:
         self.driver.execute_script("document.getElementsByTagName('footer')[0].remove();")
         self.driver.execute_script("document.getElementById('fixedban').style.display='none'")
 
-
     def select_value(self,selector_loc: tuple,value, how='value'):
         selector = Select(self.get_element(selector_loc))
         if how=='value':
             selector.select_by_value(value)
         elif how=='visible_text':
             selector.select_by_visible_text(value)
-
-
-    def send_return_key(self,loc: tuple):
-        self.get_element(loc).send_keys(Keys.RETURN)
