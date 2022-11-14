@@ -1,5 +1,3 @@
-import time
-
 from auto_practice.pages.base import BasePage
 from auto_practice.helpers.user import User
 import auto_practice.helpers.user_generator as user_gen
@@ -47,6 +45,7 @@ class FormPage(BasePage):
         day.click()
 
     def save_result(self):
+        #This needs to be refactored
         table_data_elements = self.get_elements(self.demo_locators.result_table)
         table_data_keys = self.get_elements(self.demo_locators.result_table_keys)
         table_values = [i.text for i in table_data_elements]

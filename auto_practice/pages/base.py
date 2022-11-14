@@ -35,8 +35,3 @@ class BasePage:
 
     def send_return_key(self,loc: tuple):
         self.get_element(loc).send_keys(Keys.RETURN)
-
-
-
-REMOVE_FOOTER = "document.getElementsByTagName('footer')[0].remove();"
-REMOVE_AD = "document.getElementById('fixedban').style.display='none'"
