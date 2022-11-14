@@ -44,7 +44,7 @@ class FormPage(BasePage):
         day = list(filter(lambda x: day in x.get_attribute('aria-label'), month_elements))[0]
         day.click()
 
-    def save_result(self):
+    def save_result(self) -> dict:
         #This needs to be refactored
         table_data_elements = self.get_elements(self.demo_locators.result_table)
         table_data_keys = self.get_elements(self.demo_locators.result_table_keys)
@@ -54,7 +54,7 @@ class FormPage(BasePage):
         self.get_element(self.demo_locators.close_table).click()
         return table_data
 
-    def compare_user(self, expected:User, actual:dict):
+    def compare_user(self, expected: User, actual: dict) -> bool:
         user = expected.to_dict()
         # not the best way but will do
         return user == actual

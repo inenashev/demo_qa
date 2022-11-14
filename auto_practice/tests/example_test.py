@@ -1,6 +1,4 @@
-import pytest
 from auto_practice.pages.form_page import FormPage
-from auto_practice.helpers.user import User
 
 
 def test_form(driver):
