@@ -5,6 +5,7 @@ from selenium.webdriver.support.ui import Select
 
 
 class BasePage:
+    #need to create a better way to search for elements inside other elements
     def __init__(self, driver: WebDriver, url: str):
         self.driver = driver
         self.url = url
@@ -21,6 +22,7 @@ class BasePage:
             .until(EC.visibility_of_any_elements_located(locator), ' : '.join(locator))
 
     def remove_ad_footer(self):
+        #removes ad because buttons at the footer won`t work
         self.driver.execute_script("document.getElementsByTagName('footer')[0].remove();")
         self.driver.execute_script("document.getElementById('fixedban').style.display='none'")
 

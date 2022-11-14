@@ -5,7 +5,7 @@ from auto_practice.locators.demo_form_locators import DemoLocators, DatePicker
 
 
 class FormPage(BasePage):
-
+    # may be this is not the best way, refactor classes?
     demo_locators = DemoLocators()
     date_picker_locators = DatePicker()
     user = user_gen.make_user()
@@ -39,18 +39,18 @@ class FormPage(BasePage):
         self.select_value(dp.month_selector, month, how='visible_text')
         self.select_value(dp.year_selector, year, how='visible_text')
         selected_month = self.get_elements(dp.day_selector)
-        # because %e adds ' '  in single digit days
+        # because %e adds ' '  in single digit days and breaks filter
         month_elements = list(filter(lambda x: month in x.get_attribute('aria-label'), selected_month))
         day = list(filter(lambda x: day in x.get_attribute('aria-label'), month_elements))[0]
         day.click()
 
     def save_result(self) -> dict:
-        #This needs to be refactored
+        #This needs to be refactored, to much repetition
         table_data_elements = self.get_elements(self.demo_locators.result_table)
         table_data_keys = self.get_elements(self.demo_locators.result_table_keys)
         table_values = [i.text for i in table_data_elements]
         table_keys = [i.text for i in table_data_keys]
-        table_data = dict(zip(table_keys,table_values))
+        table_data = dict(zip(table_keys, table_values))
         self.get_element(self.demo_locators.close_table).click()
         return table_data
 
