@@ -7,9 +7,9 @@ from selenium.webdriver import Chrome,ChromeOptions
 
 @pytest.fixture()
 def driver(request):
+    # someday where will be options
     options = webdriver.ChromeOptions()
     driver = webdriver.Chrome(options=options)
     driver.maximize_window()
     yield driver
-    time.sleep(5)
     driver.quit()
