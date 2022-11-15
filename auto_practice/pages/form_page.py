@@ -28,6 +28,7 @@ class FormPage(BasePage):
         self.get_elements(self.demo_locators.result_table)
 
     def fill_dob(self):
+        # separate method for dob, react datepicker is a little tricky
         dl = self.demo_locators
         dp = self.date_picker_locators
         dob = self.user.dob
@@ -40,7 +41,7 @@ class FormPage(BasePage):
         self.select_value(dp.year_selector, year, how='visible_text')
         selected_month = self.get_elements(dp.day_selector)
         # because %e adds ' '  in single digit days and breaks filter
-        # first select days of month
+        # first select days of month, because picker displays last week of prev. month and fist week of next one
         month_days = list(filter(lambda x: month in x.get_attribute('aria-label'), selected_month))
         # then select day, still could be refactored
         day = list(filter(lambda x: day in x.get_attribute('aria-label'), month_days))[0]
