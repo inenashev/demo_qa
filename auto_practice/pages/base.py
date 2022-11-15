@@ -28,7 +28,7 @@ class BasePage:
 
     def select_value(self,selector_loc: tuple,value, how='value'):
         selector = Select(self.get_element(selector_loc))
-        if how=='value':
+        if how == 'value':
             selector.select_by_value(value)
-        elif how=='visible_text':
+        elif how == 'visible_text':
             selector.select_by_visible_text(value)

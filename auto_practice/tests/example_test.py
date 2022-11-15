@@ -7,6 +7,8 @@ def test_form(driver):
     fp.fill_form()
     fp.fill_dob()
     fp.submit_form()
-    user = fp.user
+    user = fp.user.to_dict()
     result = fp.save_result()
-    assert fp.compare_user(user, result) == True
+    for k in user.keys():
+        assert result[k] == user[k], \
+            f"Actual: {k}: {result[k]}, Expected: {k}: {user[k]}"

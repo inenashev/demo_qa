@@ -58,8 +58,5 @@ class FormPage(BasePage):
         self.get_element(self.demo_locators.close_table).click()
         return table_data
 
-    def compare_user(self, expected: User, actual: dict) -> bool:
-        user = expected.to_dict()
-        # not the best way but will do
-        return user == actual
+
 
