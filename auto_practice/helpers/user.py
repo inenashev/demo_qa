@@ -13,6 +13,7 @@ class User:
     subject: str = None
     dob: datetime = None
 
+    # because result format and input format do not match
     def to_dict(self):
         data = {'Student Name': f"{self.first_name} {self.last_name}",
                 'Student Email': self.email,
