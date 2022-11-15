@@ -25,6 +25,7 @@ class FormPage(BasePage):
 
     def submit_form(self):
         self.get_element(self.demo_locators.submit_btn).click()
+        # wait for results to appear
         self.get_elements(self.demo_locators.result_table)
 
     def fill_dob(self):
