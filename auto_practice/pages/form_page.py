@@ -5,10 +5,11 @@ from auto_practice.locators.demo_form_locators import DemoLocators, DatePicker
 
 
 class FormPage(BasePage):
-    # may be this is not the best way, refactor classes?
-    demo_locators = DemoLocators()
-    date_picker_locators = DatePicker()
-    user = user_gen.make_user()
+    def __init__(self, driver, url):
+        super().__init__(driver, url)
+        self.demo_locators = DemoLocators()
+        self.date_picker_locators = DatePicker()
+        self.user = user_gen.make_user()
 
     def open_and_wait_for_load(self):
         self.navigate_to()

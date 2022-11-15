@@ -50,6 +50,7 @@ class DemoLocators:
     result_table_keys = (By.XPATH, '//div[@class="table-responsive"]//td[1]')
     close_table = (By.CSS_SELECTOR, "#closeLargeModal")
 
+
 class DatePicker:
 
     date_picker = (By.CSS_SELECTOR, ".react-datepicker")
