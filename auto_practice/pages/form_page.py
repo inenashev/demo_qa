@@ -55,7 +55,9 @@ class FormPage(BasePage):
         table_values = process_elements(self.demo_locators.result_table)
         table_keys = process_elements(self.demo_locators.result_table_keys)
         table_data = dict(zip(table_keys, table_values))
+
         self.get_element(self.demo_locators.close_table).click()
+
         return table_data
 
 
