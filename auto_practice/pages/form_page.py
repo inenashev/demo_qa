@@ -1,5 +1,4 @@
 from auto_practice.pages.base import BasePage
-from auto_practice.helpers.user import User
 import auto_practice.helpers.user_generator as user_gen
 from auto_practice.locators.demo_form_locators import DemoLocators, DatePicker
 
