@@ -12,8 +12,6 @@ class DemoLocators:
     upload_picture = (By.CSS_SELECTOR, "#uploadPicture")
     current_address = (By.CSS_SELECTOR, "#currentAddress")
 
-
-
     gender_selector = (By.CSS_SELECTOR, "#genterWrapper")
     gender_male = (By.CSS_SELECTOR, "label[for='gender-radio-1']")
     gender_female = (By.CSS_SELECTOR, "label[for='gender-radio-2']")
@@ -33,7 +31,6 @@ class DemoLocators:
         else:
             raise ValueError("State is not valid")
 
-
     select_city = (By.CSS_SELECTOR, "#city")
 
     def select_city_value(self, value: str) -> tuple:
@@ -44,7 +41,6 @@ class DemoLocators:
             raise ValueError("City is not valid")
 
     submit_btn = (By.CSS_SELECTOR, '#submit')
-
 
     result_table = (By.XPATH, '//div[@class="table-responsive"]//td[2]')
     result_table_keys = (By.XPATH, '//div[@class="table-responsive"]//td[1]')
