@@ -40,16 +40,20 @@ class FormPage(BasePage):
         self.select_value(dp.year_selector, year, how='visible_text')
         selected_month = self.get_elements(dp.day_selector)
         # because %e adds ' '  in single digit days and breaks filter
-        month_elements = list(filter(lambda x: month in x.get_attribute('aria-label'), selected_month))
-        day = list(filter(lambda x: day in x.get_attribute('aria-label'), month_elements))[0]
+        # first select days of month
+        month_days = list(filter(lambda x: month in x.get_attribute('aria-label'), selected_month))
+        # then select day, still could be refactored
+        day = list(filter(lambda x: day in x.get_attribute('aria-label'), month_days))[0]
         day.click()
 
     def save_result(self) -> dict:
-        #This needs to be refactored, to much repetition
-        table_data_elements = self.get_elements(self.demo_locators.result_table)
-        table_data_keys = self.get_elements(self.demo_locators.result_table_keys)
-        table_values = [i.text for i in table_data_elements]
-        table_keys = [i.text for i in table_data_keys]
+        def process_elements(locator: tuple) -> list:
+            elements = self.get_elements(locator)
+            data = [i.text for i in elements]
+            return data
+
+        table_values = process_elements(self.demo_locators.result_table)
+        table_keys = process_elements(self.demo_locators.result_table_keys)
         table_data = dict(zip(table_keys, table_values))
         self.get_element(self.demo_locators.close_table).click()
         return table_data
