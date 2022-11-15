@@ -23,7 +23,7 @@ class DemoLocators:
     hobbies_music = (By.CSS_SELECTOR, "label[for='hobbies-checkbox-3']")
 
     select_state = (By.CSS_SELECTOR, "#state")
-
+    #TODO remove duplication
     def select_state_value(self, value: str) -> tuple:
         valid_states = ['NCR', 'Uttar Pradesh', 'Haryana', 'Rajasthan']
         if value in valid_states:
